@@ -9,11 +9,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewHolder> {
-    ArrayList<String> data;
-    public recyclerViewAdapter(ArrayList<String> input){
-        data = input;
+    ArrayList<Task> data;
+    public recyclerViewAdapter(ArrayList<Task> input){
+        this.data = input;
     }
     public recyclerViewHolder onCreateViewHolder(ViewGroup parent,int viewType){
-        View item = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_layout,)
+        View item = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_layout,parent,false);
+        return new recyclerViewHolder(item);
+    }
+    public void onBindViewHolder(recyclerViewHolder holder,int position){
+        Task s = data.get(position);
+        holder.txt.setText(s.getTask());
+        holder.checkbox.setChecked(s.isCheckbox());
+    }
+    public int getItemCount(){
+        return data.size();
     }
 }
