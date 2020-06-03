@@ -29,6 +29,7 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewHolder
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 builder.setTitle("Delete");
                 builder.setMessage("Are you sure you want to delete\n" + holder.txt.getText().toString() + "?");
+                builder.setCancelable(false);
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
